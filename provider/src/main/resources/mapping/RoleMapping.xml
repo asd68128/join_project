@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sl.automobile.mapper.RoleMapper">
+    <sql id="roleSql">
+        roleId,
+        roleName,
+        roleList,
+        roleDescribe
+    </sql>
+    <select id="findRoleAll" resultType="com.sl.automobile.pojo.RoleTable">
+        select
+        *
+        from
+        role_table
+    </select>
+    <!--增加新角色管理用户-->
+    <insert id="insertRole" parameterType="com.sl.automobile.pojo.RoleTable">
+        insert
+        into
+        role_table
+        values
+        (default ,#{roleName} ,#{roleList} ,#{roleDescribe} )
+    </insert>
+    <!--单删-->
+    <delete id="deleteRole" parameterType="int">
+        delete
+        from
+        role_table
+        where
+        roleId = #{roleId}
+    </delete>
+    <!--根据id修改角色信息-->
+    <update id="updateRole" parameterType="com.sl.automobile.pojo.RoleTable">
+        update
+        role_table
+        set
+        roleName = #{roleName} ,
+        roleList = #{roleList} ,
+        roleDescribe = #{roleDescribe}
+        where
+        roleId = #{roleId}
+    </update>
+    <!--通过id查询该角色的信息-->
+    <select id="loadRoleByRoleId" resultType="com.sl.automobile.pojo.RoleTable" parameterType="int">
+        select
+        *
+        from
+        role_table
+        where
+        roleId = #{roleId}
+    </select>
+    <!--查询该用户拥有的角色-->
+    <select id="containRole" resultType="com.sl.automobile.pojo.RoleTable" parameterType="int">
+        select roleName from role_table where roleId in(select rid from user_role_table where uid=#{userId} )
+    </select>
+    <!--查询改用未拥有的角色-->
+    <select id="unContainRole" resultType="com.sl.automobile.pojo.RoleTable" parameterType="int">
+        select roleName from role_table where roleId not in(select rid from user_role_table where uid=#{userId} )
+    </select>
+    <!--将新的角色分配信息添加到关系表中-->
+    <insert id="insertByName">
+        insert into user_role_table values (#{userId}, (select roleId from role_table where roleName=#{ids} ))
+    </insert>
+    <!--将新的角色分配信息从关系表中移除-->
+    <delete id="deleteByName">
+        delete from user_role_table where uid=#{userId} and rid=(select roleId from role_table where roleName=#{ids} )
+    </delete>
+    <!--批量删除-->
+    <delete id="deleteRoles" parameterType="list">
+        delete from role_table where roleId in
+        <foreach collection="list" item="ids" open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+    </delete>
+
+
+    <!--&lt;!&ndash;获取当前角色最大ID&ndash;&gt;
+    <select id="getRoleMaxId" resultType="int" parameterType="int">
+        select
+        max(roleId)
+        from
+        role_table
+    </select>-->
+
+
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sl.automobile.mapper.DelUserMapper">
+    <select id="findAll" resultType="com.sl.automobile.pojo.Deluser">
+        SELECT
+        <!--<include refid="userSql"/>-->
+        *
+        FROM
+        deluser
+    </select>
+    <insert id="insertUser1" parameterType="com.sl.automobile.pojo.UserTable">
+        INSERT
+        INTO
+        deluser
+        VALUES
+        ( #{userId},#{userName},#{userPwd},#{userSex},#{userCreateDate},#{userPhoto},#{userLike},#{userType},#{userReallyName},#{userPhone})
+    </insert>
+    <delete id="deleteDelUser" parameterType="int">
+      DELETE
+      FROM
+      deluser
+       WHERE
+        <if test="userId!=null and userId!=''">
+            userId=#{userId}
+        </if>
+
+    </delete>
+</mapper>

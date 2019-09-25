@@ -1,0 +1,19 @@
+
+server:
+  port: 9010
+spring:
+  application:
+    name: producer
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://trtmu132.mysql.rds.aliyuncs.com:3306/bwqc?characterEncoding=utf-8&serverTimezone=UTC&useSSL=true
+    username: bwqc
+    password:  bwqc123BWQC
+    type: com.alibaba.druid.pool.DruidDataSource
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+

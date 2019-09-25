@@ -1,0 +1,23 @@
+
+server:
+  port: 9028
+spring:
+  application:
+    name: caller_home
+
+#  data:
+#    solr:
+#      host: http://localhost:9010/solr/collection1
+  redis:
+      database: 4
+      host: 127.0.0.1
+      port: 6379
+  main:
+    allow-bean-definition-overriding: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+feign:
+  hystrix:
+    enabled: true

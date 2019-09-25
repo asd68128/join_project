@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/doc.min.css">
+	<style>
+		#div1{
+			margin-left: -260px;
+			margin-top: -45px;
+		}
+		.tree li {
+			list-style-type: none;
+			cursor:pointer;
+		}
+	</style>
+</head>
+
+<body>
+
+
+
+<div class="container-fluid">
+	<div id="div1" class="row">
+		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+			<ol class="breadcrumb">
+				<li><a href="#">首页</a></li>
+				<li><a href="#">数据列表</a></li>
+				<li class="active">分配角色</li>
+			</ol>
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<form role="form" class="form-inline">
+						<div class="form-group">
+							<label for="exampleInputPassword1">未分配角色列表</label><br>
+							<select id="select2" class="form-control" multiple="true" size="10" style="width:180px;overflow-y:auto;">
+
+                            <option th:each="r:${roleList1}" th:text="${r.roleName}"></option>
+ 							</select>
+						</div>
+						<div class="form-group">
+							<ul >
+								<li id="right" class="btn btn-default glyphicon glyphicon-chevron-right"></li>
+								<br>
+								<li id="left" class="btn btn-default glyphicon glyphicon-chevron-left" style="margin-top:20px;"></li>
+							</ul>
+						</div>
+						<div class="form-group" style="margin-left:40px;">
+							<label for="exampleInputPassword1">已分配角色列表</label><br>
+							<select id="select1" class="form-control" multiple="true" size="10" style="width:180px;overflow-y:auto;">
+
+								<option th:each="r:${roleList}" th:text="${r.roleName}"></option>
+							</select>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="myModalLabel">帮助</h4>
+			</div>
+			<div class="modal-body">
+				<div class="bs-callout bs-callout-info">
+					<h4>测试标题1</h4>
+					<p>测试内容1，测试内容1，测试内容1，测试内容1，测试内容1，测试内容1</p>
+				</div>
+				<div class="bs-callout bs-callout-info">
+					<h4>测试标题2</h4>
+					<p>测试内容2，测试内容2，测试内容2，测试内容2，测试内容2，测试内容2</p>
+				</div>
+			</div>
+			<!--
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            -->
+		</div>
+	</div>
+</div>
+<script src="jquery/jquery-2.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="script/docs.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$(".list-group-item").click(function(){
+			if ( $(this).find("ul") ) {
+				$(this).toggleClass("tree-closed");
+				if ( $(this).hasClass("tree-closed") ) {
+					$("ul", this).hide("fast");
+				} else {
+					$("ul", this).show("fast");
+				}
+			}
+		});
+	});
+
+	$(function () {
+		$("#right").click(function () {
+			var ops=$("#select2").val();
+			location.href="roleRight?ids="+ops;
+			for (var i=0;i<ops.length;i++){
+				var op=$("<option>");
+				op.text(ops[i]);
+				$("#select1").append(op);
+			}
+
+			$(":selected").remove();
+
+		});
+		$("#left").click(function () {
+			var ops=$("#select1").val();
+			location.href="roleLeft?ids="+ops;
+			for (var i=0;i<ops.length;i++){
+				var op=$("<option>");
+				op.text(ops[i]);
+				$("#select2").append(op);
+			}
+
+			$(":selected").remove();
+		});
+
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mapping 映射规范
+  1、mapper.namespace书写；
+  2、resultMap 作用；
+  3、sql指令 参数（id，parametermap/type,resultMap/type）
+
+-->
+<mapper namespace="com.sl.automobile.mapper.FinanceMapper">
+    <sql id="financeSql">
+        financeId,
+        financeName,
+        oneQuarter,
+        twoQuarter,
+        ThreeQuarter,
+        FourQuarter
+    </sql>
+    <select id="loadFinanceAll" resultType="com.sl.automobile.pojo.Finance">
+        select * from finance
+    </select>
+</mapper>

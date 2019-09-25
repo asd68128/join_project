@@ -1,0 +1,21 @@
+
+server:
+  port: 9030
+spring:
+  application:
+    name: route
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+zuul:
+  routes:
+    path-a:
+      path: /a/*
+      serviceId: provider
+    path-b:
+      path: /b/*
+      serviceId: caller
+  host:
+    connect-timeout-millis: 60000
+    socket-timeout-millis: 60000

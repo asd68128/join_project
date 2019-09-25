@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html lang="utf-8" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <script type="text/javascript" src="/lib/html5shiv.js"></script>
+    <script type="text/javascript" src="/lib/respond.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/h-ui/css/H-ui.min.css" />
+    <link rel="stylesheet" type="text/css" href="/h-ui.admin/css/H-ui.admin.css" />
+    <link rel="stylesheet" type="text/css" href="/lib/Hui-iconfont/1.0.8/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="/h-ui.admin/skin/default/skin.css" id="skin" />
+    <link rel="stylesheet" type="text/css" href="/h-ui.admin/css/style.css" />
+
+    <script type="text/javascript" src="/lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+    <script>DD_belatedPNG.fix('*');</script>
+
+    <title>用户管理</title>
+    <style>
+        #big{
+            border: 2px solid red;
+            width: 400px;
+            height: 400px;
+            margin: auto;
+        }
+        #slideshow{
+            height: 400px;
+            margin: auto;
+        }
+        #img1{
+            width: 398px;
+            height: 398px;
+            border: 2px solid greenyellow;
+        }
+    </style>
+</head>
+<body>
+<h2>汽车信息</h2>
+<table>
+<div id="big"  >
+    <div id="slideshow">
+        <img id="img1" onmouseover="stoplb()" onmouseout="startlb()"  src="/img/c1.jpg"/>
+    </div>
+
+</div>
+</table>
+</body>
+<script>
+    window.onload=function(){
+        intervaling=setInterval(function () {
+            showing();
+        },300 );
+    }
+    var imgs=[
+        "/img/c1.jpg",
+        "/img/c2.jpg",
+        "/img/c3.jpg",
+        "/img/c4.jpg",
+        "/img/c5.jpg",
+        "/img/c6.jpg",
+    ];
+
+    var count=0;
+    function showing() {
+        count=count%6;
+        var img1=document.getElementById("img1");
+        img1.setAttribute("src",imgs[count]);
+        count++;
+    }
+
+    function startlb() {
+        intervaling=setInterval(function () {
+            showing();
+        },200 );
+    }
+    function stoplb() {
+        clearInterval(intervaling);
+    }
+</script>
+</html>

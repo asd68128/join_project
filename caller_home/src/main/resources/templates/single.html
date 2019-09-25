@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="utf-8" xmlns:th="http://www.thymeleaf.org">
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>cssmoban</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+	
+    <!-- Mobile Specific Metas
+  ================================================== -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- CSS
+  ================================================== -->
+  	<link rel="stylesheet" href="css/zerogrid.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/responsiveslides.css">
+	<style type="text/css">
+		#xiangq{
+			height: 500px;
+			width: 300px;
+			border: solid 1px;
+			float: left;
+			margin-left: 100px;
+		}
+	</style>
+	<script src="js/jquery-latest.min.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/jquery183.min.js"></script>
+    <script src="js/responsiveslides.min.js"></script>
+    <script>
+		// You can also use "$(window).load(function() {"
+		$(function () {
+		  // Slideshow 
+		  $("#slider").responsiveSlides({
+			auto: true,
+			pager: false,
+			nav: true,
+			speed: 500,
+			namespace: "callbacks",
+			before: function () {
+			  $('.events').append("<li>before event fired.</li>");
+			},
+			after: function () {
+			  $('.events').append("<li>after event fired.</li>");
+			}
+		  });
+		});
+	</script>
+	
+	
+	<!--[if lt IE 8]>
+       <div style=' clear: both; text-align:center; position: relative;'>
+         <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+           <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+      </div>
+    <![endif]-->
+    <!--[if lt IE 9]>
+		<script src="js/html5.js"></script>
+		<script src="js/css3-mediaqueries.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+<div class="wrap-body">
+
+<!--////////////////////////////////////Header-->
+<header class="bg-theme">
+	<div class="wrap-header zerogrid">
+		<div class="row">
+			<div id="cssmenu">
+				<ul>
+					<li><a href="/Business">商家</a></li>
+					<li><a href="/MySelf">个人中心</a></li>
+					<li><a href="/Out">注销</a></li>
+				</ul>
+			</div>
+			<a href='#' class="logo"><img src="images/logo.png" /></a>
+		</div>
+	</div>
+</header>
+
+
+<!--////////////////////////////////////Container-->
+<section id="container">
+	<div class="">
+		<div class="wrap-container clearfix">
+			<div id="main-content">
+				<div class="wrap-box" style="background: #fff; box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.3);"><!--Start Box-->
+					<div class="zerogrid">
+						<div class="header">
+							<h1>法拉利加利福尼亚</h1>
+						</div>	
+						<div class="row">
+							<div class="col-2-3">
+								<div class="wrap-col">
+									<div class="slider">
+										<!-- Slideshow -->
+										<div class="callbacks_container">
+											<ul class="rslides" id="slider">
+												<li>
+													<img src="images/product-slide1.jpg" alt="">
+												</li>
+												<li>
+													<img src="images/product-slide2.jpg" alt="">
+												</li>
+											</ul>
+										</div>
+										<div class="clear"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-1-3">
+								<div class="wrap-col">
+									<div id="xiangq">
+									<p class="price">€78,400 </p>
+									<ul class="specs">
+										<li><strong>生产商</strong> <span>Bentley</span></li>
+										<li><strong>模型</strong> <span>Continental</span></li>
+										<li><strong>生产时间</strong> <span>2010</span></li>
+										<li><strong>里程</strong> <span>23,400 km</span></li>
+										<li><strong>功率</strong> <span>230 HP</span></li>
+										<li><strong>燃油</strong> <span>柴油</span></li>
+										<li><strong>车门</strong> <span>4</span></li>
+										<li><strong>座位数</strong> <span>2</span></li>
+										<li><strong>车辆类型</strong> <span>跑车</span></li>
+										<li><strong>颜色</strong> <span>Green</span></li>
+										<li><strong>安全气囊</strong> <span>5</span></li>
+										<li><a href="/My"><span><strong>预约试驾</strong></span></a></li>
+									</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="wrap-box">
+					<div class="zerogrid">
+						<div class="row">
+							<div class="col-2-3">
+								<div class="wrap-col">
+									<div class="info">
+										<h2 class="h3">功能</h2>
+										
+										<p>ABS，辅助加热，中控锁，巡航控制，电加热座椅，电动车窗，ESP，四轮驱动，防盗器，皮革座椅，导航系统，停车传感器，电动助力转向，天窗，挂车挂钩，氙气大灯</p>
+									</div><!-- /.post -->
+
+									<div class="info">
+										<h2 class="h3">车辆说明</h2>
+										
+										<p>黑色合金，卫星导航，蓝牙，4席，陶瓷制动器，电源启动，软关闭门，阿尔坎塔拉车顶内衬，双层玻璃，门锁，无钥匙启动，碳纤维和短划线门插入，iPod连接。350 GT，比起Franco Scaglione设计的350 GTV线条更显平衡，是第一款正式生产的兰博基尼汽车。
+											350 GT一举成名，由Carrozzeria Touring跑车制造公司生产了120台，其中大部分配有3.5升12缸发动机，功率达到320匹。
+											此外还有两个敞篷版本（350 GTS），同样由Carrozzeria Touring生产。</p>
+									</div><!-- /.post -->
+								</div>
+							</div>
+							<div class="col-1-3">
+								<div class="wrap-col">
+									<div class="info">
+										<h3>Contact details</h3>
+										<ul class="specs">
+											<li><span>名字</span> <strong> 凯文·巴洛先生</strong></li>
+											<li><span>电话</span> <strong>234354544</strong></li>
+											<li><span>手机</span> <strong>08467334343</strong></li>
+											<li><span>传真</span> <strong>45454678888</strong></li>
+											<li><span>E-Mail</span> <a href="mailto:kevinnn70@hotmail.com">kevinnn70@hotmail.com</a></li>
+											<li><span>邮编</span> <strong>B37 7BU</strong></li>
+											<li><span>地址</span> <strong>立人科技</strong></li>
+											<li><span>城市</span> <strong>西安市</strong></li>
+											<li><span>Address</span><a href="/Mapp"><strong >地图</strong></a></li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+</div>
+</body>
+</html>

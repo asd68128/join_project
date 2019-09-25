@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keys" content="">
+    <meta name="author" content="">
+  <!-- 重置文件 -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>用户注册</title>
+</head>
+<body>
+<nav style="background-color: #eea236 ; height: 50px" role="navigation">
+    <div class="container">
+        <div class="navbar-header" style="">
+            <div><a class="navbar-brand" href="/" style="font-size:32px;"></a></div>
+        </div>
+    </div>
+</nav>
+  <div class="reg_div">
+    <p>用户注册</p>
+      <form action="/register" method="post">
+          <ul class="reg_ul">
+              <li>
+                  <span>用户名：</span>
+                  <input type="text" name="userName"  placeholder="4-8位用户名" class="reg_user">
+                  <span class="tip user_hint"></span>
+              </li>
+              <li>
+                  <span>密码：</span>
+                  <input type="password" name="userPwd"  placeholder="6-16位密码" class="reg_password">
+                  <span class="tip password_hint"></span>
+              </li>
+              <li>
+                  <span>确认密码：</span>
+                  <input type="password" name="userPwd2"  placeholder="确认密码" class="reg_confirm">
+                  <span class="tip confirm_hint"></span>
+              </li>
+              <!--<li>-->
+              <!--<span>邮箱：</span>-->
+              <!--<input type="text" name="" value="" placeholder="邮箱" class="reg_email">-->
+              <!--<span class="tip email_hint"></span>-->
+              <!--</li>-->
+              <li>
+                  <span>手机号码：</span>
+                  <input type="text" name="userPhone"  placeholder="手机号" class="reg_mobile">
+                  <span class="tip mobile_hint"></span>
+              </li>
+              <li>
+                  <span>验证码：</span>
+                  <input type="text" class="form-control" name="userImgCode" placeholder="点击图片更换验证码" style="width: 120px;">
+                <!-- <button class="sendVerifyCode">获取动态密码</button>-->
+                  <a href="javaScript:changeCode()"><img src="/getImg" id="yzm" /></a>
+              </li>
+
+
+              <input type="submit" value="注册" style="height: 40px; width: 150px; background-color: slategray;font-size: 15px">
+
+              <a href="login" >去登陆</a><br>
+
+             <!-- <input type="submit" value="注册" style="height: 40px; width: 150px; background-color: slategray;font-size: 15px">-->
+
+
+          <span th:text="${error}" style="color:red;"/>
+          </ul>
+      </form>
+
+  </div>
+  
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
+    <script src="jquery/jquery-2.1.1.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      /* $(function(){*/
+            /*//发送验证码
+            $(".sendVerifyCode").on("click", function(){
+                var number = $("input[name=userPhone]").val();
+                $.ajax({
+                    url: "/yzm",
+                    async : true,
+                    type: "post",
+                    dataType: "json",
+                    data: {"number":number},
+                    success: function (data) {
+                        if(data == 'fail'){
+                            alert("发送验证码失败");
+                            return ;
+                        }
+                    }
+                });
+            })*/
+
+    /* function sendVerifyCode() {
+         var number = $("input[name=userPhone]").val();
+         window.location.href="/yzm?phoneNum="+number;
+
+     }*/
+
+
+    function changeCode() {
+        var nTime = new Date().getTime();
+        $("#yzm").attr("src","/getImg?timestamp="+nTime);
+    }
+</script>
+ 
+ <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+
+<p>24小时服务热线：114</p>
+</div>
+</body>
+</html>
+

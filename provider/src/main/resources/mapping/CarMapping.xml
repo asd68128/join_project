@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sl.automobile.mapper.CarMapper">
+    <select id="findAll" resultType="com.sl.automobile.pojo.CarTable">
+        SELECT
+        *
+        FROM
+        car_table
+    </select>
+    <select id="findById" resultType="com.sl.automobile.pojo.CarTable" parameterType="int">
+        SELECT
+        *
+        FROM
+        car_table
+        WHERE
+        <if test="carId!=null and carId!=''">
+            carId=#{carId}
+        </if>
+    </select>
+    <select id="findByName" resultType="com.sl.automobile.pojo.CarTable" parameterType="string">
+        SELECT
+        *
+        FROM
+        car_table
+        <where>
+            <if test="carName!=null and carName!=''">
+                carName=#{carName}
+            </if>
+        </where>
+    </select>
+    <select id="findByNameLike" resultType="com.sl.automobile.pojo.CarTable" parameterType="string">
+        SELECT
+        *
+        FROM
+        car_table
+        <where>
+            <if test="carName!=null and carName!=''">
+                carName
+                like
+                "%"#{carName}"%"
+            </if>
+        </where>
+    </select>
+    <select id="findMaxCount" resultType="int">
+        select count(carId) from car_table
+    </select>
+
+    <insert id="insertCar" parameterType="com.sl.automobile.pojo.CarTable">
+        INSERT
+        INTO
+        car_table
+        VALUES
+        (DEFAULT ,#{carName},#{carPrice},#{carInfo},#{carCreateDate},#{carType},#{carColor},#{carDescribe},#{carBusiness},#{carPhoto})
+    </insert>
+    <update id="updateByCar" parameterType="com.sl.automobile.pojo.CarTable">
+        UPDATE
+        car_table
+        <set>
+            <if test="carPrice!=null and carPrice!=''">
+                carPrice=#{carPrice},
+            </if>
+            <if test="carInfo!=null and carInfo!=''">
+                carInfo=#{carInfo},
+            </if>
+            <if test="carDescribe!=null and carDescribe!=''">
+                carDescribe=#{carDescribe},
+            </if>
+            <if test="carPhoto!=null and carPhoto!=''">
+                carPhoto=#{carPhoto}
+            </if>
+        </set>
+        WHERE
+        carName=#{carName}
+    </update>
+    <delete id="deleteById" parameterType="int">
+        DELETE
+        FROM
+        car_table
+        WHERE
+        <if test="carId!=null and carId!=''">
+            carId=#{carId}
+        </if>
+    </delete>
+    <delete id="deleteByName" parameterType="string">
+        DELETE
+        FROM
+        car_table
+        WHERE
+        <if test="carName!=null and carName!=''">
+            carName=#{carName}
+        </if>
+    </delete>
+</mapper>

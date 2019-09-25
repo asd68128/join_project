@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keys" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <title>个人信息</title>
+    <style>
+        body{
+            text-align:center
+        }
+    </style>
+</head>
+<body>
+<div class="navbar-wrapper">
+    <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color: sandybrown ; height: 50px">
+            <div class="container">
+                <div class="navbar-header">
+                    <div><a class="navbar-brand" href="/" style="font-size:32px;"></a></div>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse" style="float:right;">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li style="padding-top: 15px">欢迎你：<span th:text="${session.userName}"></span></li>
+                        <li><a href="user_center">个人中心</a></li>
+                        <li><a href="loginOut">注销</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<h2>个人信息</h2>
+<div class="panel panel-default">
+    <div class="panel-heading">个人信息<div style="float:right;cursor:pointer;" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-question-sign"></i></div></div>
+    <div class="panel-body">
+        <form id="userInfo" role="form" action="user_info" method="post">
+            <input type="text" name="userId" th:value="${userInfo.getUserId()}" hidden/>
+            <div class="form-group">
+                <label for="exampleInputUserName">用户名</label>
+                <input type="text" class="form-control" name="userName" id="exampleInputUserName" th:value="${userInfo.getUserName()}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">密码</label>
+                <input type="password" class="form-control" name="userPwd" id="exampleInputPassword1" th:value="${userInfo.getUserPwd()}">
+            </div>
+            <div class="form-group">
+                <label for="UserRealname">真实名字</label>
+                <input type="text" class="form-control" name="userRealname" id="UserRealname" th:value="${userInfo.getUserRealname()}" >
+            </div>
+            <div class="form-group">
+                <label for="UserPhone">手机号</label>
+                <input type="text" class="form-control" name="userPhone" id="UserPhone" th:value="${userInfo.getUserPhone()}" >
+            </div>
+            <div class="form-group">
+                <label for="UserAdress">地址</label>
+                <input type="text" class="form-control" name="userAdress" id="UserAdress" th:value="${userInfo.getUserAdress()}" >
+            </div>
+            <div class="form-group">
+                <label for="UserPhoto">头像</label>
+                <input type="text" class="form-control" name="userPhoto" id="UserPhoto" th:value="${userInfo.getUserPhoto()}" >
+            </div>
+            <button type="submit" class="btn btn-success"><i class="glyphicon glyphicon-edit"></i>提交预约申请</button>
+            <span th:text="${error}"/>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
